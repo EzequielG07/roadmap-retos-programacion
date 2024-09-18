@@ -41,21 +41,28 @@ console.log('padStart', sentence.padStart(102, '.'));
 console.log('padEnd', sentence.padEnd(40, '^'));
 console.log('padEnd', sentence.padEnd(80, '*'));
 
-
 //raw - Metodo que funciona con template literals para crear un string, en base a otra que tenga caracteres especiales que no se quieren perder o interpretar de forma inadecuada.
-const __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-  if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-  return cooked;
-};
+const __makeTemplateObject =
+    (this && this.__makeTemplateObject) ||
+    function (cooked, raw) {
+        if (Object.defineProperty) {
+            Object.defineProperty(cooked, 'raw', { value: raw });
+        } else {
+            cooked.raw = raw;
+        }
+        return cooked;
+    };
 
-const filePath = String.raw(__makeTemplateObject(["C:Developmentprofileaboutme.html"], ["C:\\Development\\profile\\aboutme.html"]));
-console.log('raw', "Ruta de acceso: ".concat(filePath));
+const filePath = String.raw(
+    __makeTemplateObject(['C:Developmentprofileaboutme.html'], ['C:\\Development\\profile\\aboutme.html'])
+);
+console.log('raw', 'Ruta de acceso: '.concat(filePath));
 
 //repeat - Devuelve una nueva string que contiene el numero de copias del string del argumento, concatenadas
 const strSinSpacio = 'Mundo!';
 const strConSpacio = 'Mundo! ';
-console.log('repeat 1', "Hola ".concat(strSinSpacio.repeat(3)));
-console.log('repeat 2', "Hola ".concat(strConSpacio.repeat(5)));
+console.log('repeat 1', 'Hola '.concat(strSinSpacio.repeat(3)));
+console.log('repeat 2', 'Hola '.concat(strConSpacio.repeat(5)));
 
 //replace - Sustituye uno, constios, o toda un string, con otra string del segundo argumento del metodo.
 const ownRegex = /Brais Moure/i;
@@ -87,38 +94,35 @@ console.log('trimEnd', whiteSpaces.trimEnd());
 
 // EJERCICIO EXTRA
 const esPalindromo = function (my_string) {
-  const reverseStr = my_string.toLowerCase().split('').reverse().join('');
-  if (my_string.toLowerCase() === reverseStr) {
-      console.log('Es palindroma');
-  }
-  else {
-      console.log('No es palindroma');
-  }
+    const reverseStr = my_string.toLowerCase().split('').reverse().join('');
+    if (my_string.toLowerCase() === reverseStr) {
+        console.log('Es palindroma');
+    } else {
+        console.log('No es palindroma');
+    }
 };
 
 esPalindromo('reconocer');
 esPalindromo('mundo');
 
 const esAnagrama = function (str1, str2) {
-  const reverseStr2 = str2.toLowerCase().split('').reverse().join('');
-  if (str1.toLowerCase() === reverseStr2) {
-      console.log("La palabra ".concat(str1, " es un anagrama"));
-  }
-  else {
-      console.log("".concat(str1, " no es un anagrama"));
-  }
+    const reverseStr2 = str2.toLowerCase().split('').reverse().join('');
+    if (str1.toLowerCase() === reverseStr2) {
+        console.log('La palabra '.concat(str1, ' es un anagrama'));
+    } else {
+        console.log(''.concat(str1, ' no es un anagrama'));
+    }
 };
 esAnagrama('amor', 'roma');
 
 const esIsograma = function (my_string) {
-  const letrasArray = my_string.toLowerCase().split('');
-  const letrasSet = new Set(letrasArray);
-  if (letrasArray.length === letrasSet.size) {
-      console.log("La palabra ".concat(my_string, " es un isograma"));
-  }
-  else {
-      console.log("".concat(my_string, " no es un isograma"));
-  }
+    const letrasArray = my_string.toLowerCase().split('');
+    const letrasSet = new Set(letrasArray);
+    if (letrasArray.length === letrasSet.size) {
+        console.log('La palabra '.concat(my_string, ' es un isograma'));
+    } else {
+        console.log(''.concat(my_string, ' no es un isograma'));
+    }
 };
 
 esIsograma('murcielago');
