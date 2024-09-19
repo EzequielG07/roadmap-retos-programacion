@@ -7,9 +7,9 @@ const esPalindromo = (word) => {
     }
 };
 
-esPalindromo('radar');
-esPalindromo('neuquen');
-esPalindromo('perro');
+// // esPalindromo('radar');
+// // esPalindromo('neuquen');
+// // esPalindromo('perro');
 
 const sonAnagramas = (word1, word2) => {
     const arr1 = Array.from(word1).sort().join('');
@@ -26,20 +26,40 @@ const sonAnagramas = (word1, word2) => {
     // }
 };
 
-sonAnagramas('amor', 'roma');
-sonAnagramas('perro', 'perra');
+// // sonAnagramas('amor', 'roma');
+// // sonAnagramas('perro', 'perra');
 
-const esIsograma = (word) => {
+const esHeterograma = (word) => {
     const arr = Array.from(word);
     const isogram = arr.some((value, index) => arr.indexOf(value) !== index);
     isogram !== true
-        ? console.log(`La palabra "${word}" es un ISOGRAMA`)
-        : console.log(`La palabra "${word} NO ES UN ISOGRAMA"`);
+        ? console.log(`La palabra "${word}" es un HETEROGRAMA`)
+        : console.log(`La palabra "${word} NO ES UN HETEROGRAMA"`);
 };
 
-esIsograma('murcielago');
-esIsograma('violeta');
-esIsograma('perro');
+// // esHeterograma('murcielago');
+// // esHeterograma('violeta');
+// // esHeterograma('perro');
+
+const isIsograma = (word) => {
+    const arr = Array.from(word);
+    let characters = {};
+
+    arr.forEach((char) => {
+        characters[char] = (characters[char] || 0) + 1;
+    }); //?--> crea el obj con los caracteres como keys y la cantidad como los values
+
+    const setOfCharacters = new Set(Object.values(characters)); //?--> creo el set, desde un array generado a partir de los values del Obj "characters"
+
+    setOfCharacters.size > 1
+        ? console.log(`La palabra ${word} no es un ISOGRAMA`)
+        : console.log(`La palabra ${word} ES ISOGRAMA`);
+};
+
+// // isIsograma('murcielago');
+// // isIsograma('radar');
+// // isIsograma('phytonphytonphytonphyton');
+// // isIsograma('radarradar');
 
 //sgte funcion para abarcar todo lo anterior
 
@@ -59,13 +79,32 @@ const check = (str1, str2) => {
         ? console.log(`"${str1}" y "${str2}" son ANAGRAMAS`)
         : console.log(`"${str1}" y "${str2}" NO SON ANAGRAMAS`);
 
-    //isograma
-    const isogram1 = arr1.some((value, index) => arr1.indexOf(value) !== index);
-    const isogram2 = arr2.some((value, index) => arr2.indexOf(value) !== index);
+    //heterograma
+    const heterogram1 = arr1.some((value, index) => arr1.indexOf(value) !== index);
+    const heterogram2 = arr2.some((value, index) => arr2.indexOf(value) !== index);
 
-    isogram1 !== true ? console.log(`"${str1}" es ISOGRAMA`) : console.log(`"${str1}" NO ES ISOGRAMA`);
-    isogram2 !== true ? console.log(`"${str2}" es ISOGRAMA`) : console.log(`"${str2}" NO ES ISOGRAMA`);
+    heterogram1 !== true ? console.log(`"${str1}" es HETEROGRAMA`) : console.log(`"${str1}" NO ES HETEROGRAMA`);
+    heterogram2 !== true ? console.log(`"${str2}" es HETEROGRAMA`) : console.log(`"${str2}" NO ES HETEROGRAMAA`);
+
+    //isograma
+
+    let characters1 = {};
+    let characters2 = {};
+
+    arr1.forEach((char) => {
+        characters1[char] = (characters1[char] || 0) + 1;
+    });
+    arr2.forEach((char) => {
+        characters2[char] = (characters2[char] || 0) + 1;
+    });
+
+    const setOfCharacters1 = new Set(Object.values(characters1));
+    const setOfCharacters2 = new Set(Object.values(characters2));
+
+    setOfCharacters1.size > 1 ? console.log(`"${str1}" NO ES ISOGRAMA`) : console.log(`"${str1}" ES ISOGRAMA`);
+    setOfCharacters2.size > 1 ? console.log(`"${str2}" NO ES ISOGRAMA`) : console.log(`"${str2}" ES ISOGRAMA`);
 };
 
 check('amor', 'roma');
-check('radar', 'neuquen');
+check('radar', 'perro');
+check('amoramoramor', 'murcielago');
