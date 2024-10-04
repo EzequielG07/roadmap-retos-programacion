@@ -15,5 +15,5 @@ console.log('cola original', cola);
 cola.unshift('a');
 console.log('agregar elemento a la cola en la ultima posicion (izquierda)', cola);
 
-cola.pop();
+cola.shift();
 console.log('eliminar el ultimo elemento de la cola (elementos que fue agregado primero)', cola);
